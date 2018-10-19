@@ -45,6 +45,7 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
+<!--
 	<h1>Green Energy.</h1>
 <p>How green is energy production across the world?</p>
 
@@ -52,25 +53,72 @@
 
 <p>Data Source: http://datasets.wri.org/dataset/globalpowerplantdatabase</p>
 
-
-<!--
-        <p>This is the Fusion Byte of the Data Pipeline class. This
-        page should explain what question you want to answer and use
-        the visualization tools provided by Google Fusion Table to
-        answer it. </p>
--->
       </div>
 
 <iframe width="800" height="600" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?q=select+col5+from+1i4ALcnKeJoWYChK1ZBmSpF2k0tFbvIbGRbqEB7uB&amp;viz=MAP&amp;h=false&amp;lat=21.21448394242836&amp;lng=3.2411916836416594&amp;t=1&amp;z=2&amp;l=col5&amp;y=2&amp;tmplt=2&amp;hml=TWO_COL_LAT_LNG"></iframe>
 
 <br>
 <br>
+-->
 
-Narrative
+<h1>Visual Narrative of Mobile Data</h1>
+<p>
+I am not a big smartphone user so my data is very sparse.  Also, my phone sensors are not recording as well as they could, particularly the location sensor.
+</p>
+
+<h2>Data Quality</h2>
+<h3>Data Completeness</h3>
+<p>
+The data is far from complete.  I wanted to avoid using google cloud since I did not want to give my credit card and address to google, so I spent too much time trying to get the aware website to connect to my own database.  I tried sqlite at first and even installed and setup a mysql database.  However, it never worked.  I also mistakely assumed that having the app installed and running with all sensors turned on would allow it to collect data.  This was wrong.  It only starts collecting once it is hooked into google.  Lastly, the sensors on my phone do not have the granularity that I expected.  I was anticipating creating a google map showing roads that I traveled on as well as a bit of biking that I did.  Instead I got five points.  If I collected correctly over the 2-3 weeks that I had the app running, then perhaps I could have collected enough points to make a nice map.
+</p>
+
+
+<h3>Data Coherence</h3>
+<p>
+The data that I do have is coherent.  It is not obvious solely from the data, but using my own memory of travel and conversations that I had with people I can see how the data matches up with those events.  I do not understand how the units work in the Accelerometer data.  I read the documentation on the Aware website, but they say my phone should read 9 m^2 / second when the phone is at rest.  However, it appears to show some sort of change in acceleration from a default value.  In any case I do not need to know the exact unit values to detect my road travel vs my time at home or walking so at least in that regard the data does capture these events.  However, without my "expert" view of my own experiences this data would be difficult to understand without a better understanding of the unit values.
+</p>
+
+
+<h3>Data Correctness</h3>
+<p>
+I did not have to do any kind of "clean up" at all.  There were no missing values aside from some columns being empty as well as some tables being empty.  In the case of the columns, I was not interested in these at all, and the empty tables were a result of my phone lacking the necessary sensors.  There were no instances of incorrect values for categorical data.  All expected values were there.
+</p>
+
+<h3>Data Accountability</h3>
+<p>
+I cannot be certain of things like network rate or the accelerometer due to confusion over unit values and nothing else to compare it with.  I would need another phone using the same sensors to make a good comparison.  However, as I mentioned above, my own experiences match up with what I see in the data, so I am going to assume it is correct.
+</p>
+
+<h2>Question</h2>
+<p>
+What is my most active hour across all measures?  What hour produces the most speed, messages, locations, screen touches, etc?
+</p>
+
+
+<p>
+The "Acceleration over Time" chart can be used to get an idea of when I was traveling in a car.  The x axis shows the count of hours since recording began.
+</p>
+<p>
+The "Location Map" shows my locations over this same timeperiod.  You can click on the barchart to see the locations I was in for each hour.  The locations are sparse due to the poor quality of my phone's location sensor.  I know I was in more locations than this, but it only captured a few.
+</p>
 <br>
 
 <div class='tableauPlaceholder' id='viz1539833140471' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Aw&#47;AwareAccel&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AwareAccel&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Aw&#47;AwareAccel&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1539833140471');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
+
+<p>
+The messages chart shows that I had two text message conversations.  One with my wife and the other with a parent of my daughter's friend who invited us to a birthday party.  This is not unusual for me.  I hardly ever text unless somebody contacts me.
+</p>
+
+
+<p>
+The screen pie chart below shows the four screen states of off, on, locked ???.
+</p>
+
+
+<p>
+The last chart shows the screen usage broken out by hour.  I could not figure out how to do multi-barcharts correctly in Tableau so I created this chart elsewhere.
+</p>
 
 
 
