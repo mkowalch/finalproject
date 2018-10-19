@@ -64,7 +64,7 @@
 <h2>Visual Narrative for Mobile Data</h2>
 
 <p>
-This website shows some data I collected on myself using the Aware Framework App found <a href="http://www.awareframework.com">here</a>.  What follows is a discussion of the data's quality and some visualizations of the data as well as a simple question that the data can answer.
+This website shows some data I collected on myself using the Aware Framework App found <a href="http://www.awareframework.com">here</a>.  What follows is a discussion of the data's quality and some visualizations of the data as well as a simple question that the data can be used to answer.
 </p>
 
 <h2>Data Quality</h2>
@@ -126,7 +126,7 @@ The last chart shows the screen "unlocked" state broken out by hour as well as t
 <div class='tableauPlaceholder' id='viz1539915259068' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Aw&#47;AwareAccel&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AwareAccel&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Aw&#47;AwareAccel&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1539915259068');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
 
-<img src="img/screen_multi_barchart.png" alt="screen multi-barchart"/>
+<img src="css/screen_multi_barchart.png" alt="screen multi-barchart"/>
 
 
 <p>
@@ -136,7 +136,7 @@ As can be seen from the screen and acceleration visualizations, I do not use my 
 
 <h2>Conclusion</h2>
 <p>
-I am not a big smartphone user so my data is very sparse.  Also, my phone sensors are not recording as well as they could, particularly the location sensor.  Attempting to work around google's cloud service was a mistake, which probably cost me weeks of data that could have given me some better visualizations.  Tableau is a good tool, but the Data Connector panel is tedious to use to look at different datasets at the same time.
+I am not a big smartphone user so my data is very sparse.  Also, my phone sensors are not recording as well as they could, particularly the location sensor.  Attempting to work around google's cloud service was a mistake, which probably cost me weeks of data that could have given me some better visualizations.  Tableau is a good tool, but the Data Connector panel is tedious to use to look at different datasets at the same time.  One thing I am not sure of is why my google cloud dashboard says that the Aware app has uploaded hundreds of megabytes of data into the google cloud database, but when I dump every table to tsv files I only end up with 31MB of data.  I think I might be making a mistake somewhere with my sql.
 </p>
 
 
