@@ -31,6 +31,12 @@ def about():
     template = JINJA_ENVIRONMENT.get_template('templates/about.html')
     return template.render()
 
+@app.route('/d3_stuff')
+def about():
+    template = JINJA_ENVIRONMENT.get_template('templates/d3_stuff.html')
+    return template.render()
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""
