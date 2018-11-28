@@ -64,11 +64,11 @@ data1 = [
 
 	div.style("width","650px")
 		.style("margin","10px")
+		.style("padding","3px")
 		.style("background-color","#e0e0eb");
 
-	var h2 = div.append("h2");
-
-	h2.html("Data");
+	var h2_data = div.append("h2");
+	h2_data.html("Data");
 
 	var p = div.append("p");
 	p.html("The data was collected using the Twitter Streaming API.  To capture tweets from Pittsburgh latitude and longitude coordinates forming a box around the city are passed to the API as well as a set of OAuth tokens and Twitter will stream tweets that occur within the box in return.  The tweets are in json format.");
@@ -83,6 +83,9 @@ data1 = [
 	p.html("Data Size: 37 GB");
 	p = div.append("p");
 	p.html("Total Tweeter Count: 550275 unique twitter ids");
+
+	var h2_exploratory_analysis = div.append("h2");
+	h2_exploratory_analysis.html("Exploratory Analysis");
 
 	p = div.append("p");
 	p.html("Here is a chart showing the tweets over time.  Later we'll look at smaller time slices to see when people are most active.");
@@ -130,6 +133,8 @@ data1 = [
 	});
 
 	add_hashtag_chart();
+	add_website_chart();
+
 
 }
 
@@ -209,6 +214,85 @@ function add_hashtag_chart()
 	});
 
 }
+
+function add_website_chart()
+{
+
+var data1 = [
+	{"domain_cnt":3180,"month":"201611"},
+	{"domain_cnt":1296,"month":"201612"},
+	{"domain_cnt":4506,"month":"201701"},
+	{"domain_cnt":8387,"month":"201702"},
+	{"domain_cnt":8862,"month":"201703"},
+	{"domain_cnt":7900,"month":"201704"},
+	{"domain_cnt":8723,"month":"201705"},
+	{"domain_cnt":8055,"month":"201706"},
+	{"domain_cnt":8151,"month":"201707"},
+	{"domain_cnt":4843,"month":"201708"},
+	{"domain_cnt":3657,"month":"201709"},
+	{"domain_cnt":6482,"month":"201711"},
+	{"domain_cnt":5018,"month":"201712"},
+	{"domain_cnt":5232,"month":"201801"},
+	{"domain_cnt":4886,"month":"201802"},
+	{"domain_cnt":5077,"month":"201803"},
+	{"domain_cnt":5011,"month":"201804"},
+	{"domain_cnt":4897,"month":"201805"},
+	{"domain_cnt":4880,"month":"201806"},
+	{"domain_cnt":5373,"month":"201807"},
+	{"domain_cnt":5272,"month":"201808"},
+	{"domain_cnt":4715,"month":"201809"},
+	{"domain_cnt":4943,"month":"201810"},
+	{"domain_cnt":3473,"month":"201811"}];
+
+	var div = d3.select("#main_div");
+
+	var p = div.append("p");
+	p.html("We can pull out all the websites shared in the tweets as well.  From these we can find the web domains that are being shared in Pittsburgh.  Just like hashtags, we'll be able to drill down into these over time later.");
+
+	p = div.append("p");
+	p.html("Number of Unique Website Domains used per month");
+
+	var chart_div = div.append("div");
+	chart_div.attr("id", "domain_url_chart_div");
+
+	var x = d3.scaleLinear()
+		.domain([0, 8862])
+		.range([0, 420]);
+
+	var div3 = chart_div.selectAll("div").data(data1).enter().append("div");
+	div3.style("width","600");
+	div3.style("display","flex");
+
+
+	div3.each(function(d) {
+		d3.select(this).append("div")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","black")
+		.style("font","10px sans-serif")
+		.style("width", "70px")
+		.text(function(d) {return d.month;});
+
+		d3.select(this).append("div")
+		.style("background-color","steelblue")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","white")
+		.style("font","10px sans-serif")
+		.style("width", function(d) {
+			return (x(d.domain_cnt)|0) + "px";
+		})
+		.text(function(d) {
+			return d.domain_cnt;
+		});
+	});
+
+}
+
+
+
 
 function loader()
 {
