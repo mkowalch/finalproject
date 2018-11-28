@@ -276,7 +276,7 @@ function loader()
 			.text(function(d) { return d.value; });
 		*/
 
-//	});
+	});
 
 
 
