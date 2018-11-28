@@ -64,6 +64,7 @@ data1 = [
 
 	div.style("width","650px")
 		.style("margin","10px")
+		.style("margin-top","10px")
 		.style("padding","3px")
 		.style("background-color","#e0e0eb");
 
