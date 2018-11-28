@@ -19,7 +19,7 @@
     <link href="css/theme.css" rel="stylesheet">
   </head>
 
-  <body role="document">
+  <body role="document" onload="main_loader();">
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -35,8 +35,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-<!--            <li><a href="about">About</a></li>-->
-            <li><a href="d3_stuff">D3_stuff</a></li>
+<!--            <li><a href="about">About</a></li> -->
+<!--            <li><a href="d3_stuff">D3_stuff</a></li> -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -45,12 +45,18 @@
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div class="jumbotron" id="main_div">
 
+<!--
+				<div id="research_questions">
+				</div>
 	      Who is talking in Pittsburgh on Twitter?<br>
 	      What are people in Pittsburgh talking about on Twitter?<br>
 	      Where are people in Pittsburgh tweeting from the most?<br>
 	      When are people in Pittsburgh the most active on Twitter?<br>
+-->
+
+
 
 <!--
 <h2>Visual Narrative for Mobile Data</h2>
@@ -156,5 +162,9 @@ I am not a big smartphone user so my data is very sparse.  Also, my phone sensor
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/docs.min.js"></script>
+<script src="js/d3.v5.min.js"></script>
+<script src="js/d3_functions.js"></script>
+
+
   </body>
 </html>

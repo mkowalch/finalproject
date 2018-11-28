@@ -9,6 +9,25 @@ function type(d) {
  return d;
 }
 
+function main_loader()
+{
+
+	var main_div = d3.select("#main_div");
+
+	var heading = main_div.append("h1");
+	heading.html("Pittsburgh Twitter Data");
+
+	var p = main_div.append("p");
+
+	p.html("What can we learn about Pittsburgh from Twitter data?  Where do people go?  What are they talking about?  When are they most active?");
+
+	p = main_div.append("p");
+	p.html("Utilizing Pittsburgh Twitter data we can answer these questions.  We can use information embedded in each tweet to find location, time, and topics of conversation that people in Pittsburgh are having.");
+
+
+}
+
+
 function loader()
 {
 
