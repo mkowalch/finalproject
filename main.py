@@ -34,11 +34,17 @@ def index():
     # render the web page with the data 
     return template.render()
 
-    
+
 @app.route('/about')
 def about():
     template = JINJA_ENVIRONMENT.get_template('templates/about.html')
     return template.render()
+
+@app.route('/ExploratoryAnalysis')
+def exploratory_analysis():
+    template = JINJA_ENVIRONMENT.get_template('templates/exploratory_analysis.html')
+    return template.render()
+
 
 @app.route('/data/d3_test_data.csv')
 def ddd3(path = None):
