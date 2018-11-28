@@ -78,6 +78,10 @@ data1 = [
 	p.html("Start Date: November 2016");
 	p = div.append("p");
 	p.html("End Date: November 2018");
+	p = div.append("p");
+	p.html("Data Size: 37 GB");
+	p = div.append("p");
+	p.html("Total Tweeter Count: 550275 unique twitter ids");
 
 	p = div.append("p");
 	p.html("Number of Tweets per month");
@@ -91,24 +95,22 @@ data1 = [
 		.domain([0, 1050499])
 		.range([0, 420]);
 
-	var enter_selection = d3.select("#chart_div")
-		.selectAll("#chart_div")
-		.data(data1)
-		.enter();
+	var div3 = chart_div.selectAll("div").data(data1).enter().append("div");
+	div3.style("width","600");
+	div3.style("display","flex");
 
-	enter_selection.append("div")
-		.style("background-color","brown")
+
+	div3.each(function(d) {
+		d3.select(this).append("div")
 		.style("text-align","right")
 		.style("padding","3px")
 		.style("margin","1px")
-		.style("color","white")
+		.style("color","black")
 		.style("font","10px sans-serif")
-		.style("width", "200px")
-		.text(function(d) {
-			return d.month;
-		});
+		.style("width", "70px")
+		.text(function(d) {return d.month;});
 
-	enter_selection.append("div")
+		d3.select(this).append("div")
 		.style("background-color","steelblue")
 		.style("text-align","right")
 		.style("padding","3px")
@@ -116,32 +118,13 @@ data1 = [
 		.style("color","white")
 		.style("font","10px sans-serif")
 		.style("width", function(d) {
-			return x(d.tweet_cnt) + "px";
+			return (x(d.tweet_cnt)|0) + "px";
 		})
 		.text(function(d) {
 			return d.tweet_cnt;
 		});
+	});
 
-
-/*
-	d3.select("#chart_div")
-		.selectAll("#chart_div")
-		.data(data1)
-		.enter()
-		.append("div")
-		.style("background-color","steelblue")
-		.style("text-align","right")
-		.style("padding","3px")
-		.style("margin","1px")
-		.style("color","white")
-		.style("font","10px sans-serif")
-		.style("width", function(d) {
-			return x(d.tweet_cnt) + "px";
-		})
-		.text(function(d) {
-			return d.tweet_cnt;
-		});
-*/
 
 }
 
