@@ -88,6 +88,9 @@ data1 = [
 	h2_exploratory_analysis.html("Exploratory Analysis");
 
 	p = div.append("p");
+	p.html("Below are several charts showing the kinds of data that can be extracted from the twitter data.");
+
+	p = div.append("p");
 	p.html("Here is a chart showing the tweets over time.  Later we'll look at smaller time slices to see when people are most active.");
 
 	p = div.append("p");
