@@ -61,6 +61,10 @@ data1 = [
 
 	var div = d3.select("body").append("div");
 
+	div.style("width","650px")
+		.style("margin","10px")
+		.style("background-color","#e0e0eb");
+
 	var h2 = div.append("h2");
 
 	h2.html("Data");
@@ -80,11 +84,39 @@ data1 = [
 
 
 
+	var chart_div = main_div.append("div");
+	chart_div.attr("id", "chart_div");
+
+	var x = d3.scaleLinear()
+		.domain([0, 1050499])
+		.range([0, 420]);
+
+	d3.select(".chart")
+		.selectAll("#chart_div")
+		.data(data1)
+		.enter()
+		.append("div")
+		.style("background-color","steelblue")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","white")
+		.style("font","10px sans-serif")
+		.style("width", function(d) {
+			return x(d) + "px";
+		})
+		.text(function(d) {
+			return d;
+		});
+
 
 }
 
 function loader()
 {
+
+// This is just a testing function
+
 
 	var data1 = [4, 8, 15, 16, 23, 42];
 
@@ -169,6 +201,7 @@ function loader()
 
 		return;
 
+/*
 		row.value = type(row.value);
 
  		//x2.domain([0, d3.max(row, function(d) { return d.value; })]);
@@ -183,6 +216,7 @@ function loader()
 
 		//chart.attr("height", barHeight * row.length);
 		chart.attr("height", barHeight * i);
+*/
 
 //		var bar = chart.append("g").attr("transform","translate(0," + i*barHeight + ")");
 		//var bar = chart.selectAll("g")
@@ -221,7 +255,7 @@ function loader()
 			.attr("width", function(d) { return x2(d); })
 			.attr("height", barHeight - 1);
 */
-	
+
 
 		/*
  	 	var bar = chart.selectAll("g")
@@ -241,8 +275,8 @@ function loader()
 			.attr("dy", ".35em")
 			.text(function(d) { return d.value; });
 		*/
-		
-	});
+
+//	});
 
 
 
