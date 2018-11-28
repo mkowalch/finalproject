@@ -84,14 +84,47 @@ data1 = [
 
 
 
-	var chart_div = main_div.append("div");
+	var chart_div = div.append("div");
 	chart_div.attr("id", "chart_div");
 
 	var x = d3.scaleLinear()
 		.domain([0, 1050499])
 		.range([0, 420]);
 
-	d3.select(".chart")
+	var enter_selection = d3.select("#chart_div")
+		.selectAll("#chart_div")
+		.data(data1)
+		.enter();
+
+	enter_selection.append("div")
+		.style("background-color","brown")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","white")
+		.style("font","10px sans-serif")
+		.style("width", "200px")
+		.text(function(d) {
+			return d.month;
+		});
+
+	enter_selection.append("div")
+		.style("background-color","steelblue")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","white")
+		.style("font","10px sans-serif")
+		.style("width", function(d) {
+			return x(d.tweet_cnt) + "px";
+		})
+		.text(function(d) {
+			return d.tweet_cnt;
+		});
+
+
+/*
+	d3.select("#chart_div")
 		.selectAll("#chart_div")
 		.data(data1)
 		.enter()
@@ -103,12 +136,12 @@ data1 = [
 		.style("color","white")
 		.style("font","10px sans-serif")
 		.style("width", function(d) {
-			return x(d) + "px";
+			return x(d.tweet_cnt) + "px";
 		})
 		.text(function(d) {
-			return d;
+			return d.tweet_cnt;
 		});
-
+*/
 
 }
 
