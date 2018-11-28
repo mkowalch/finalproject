@@ -140,6 +140,9 @@ data1 = [
 	add_website_chart();
 
 
+	p = div.append("p");
+	p.html("The final analysis and presentation will include a more fine-grained look at the data above, as well as a network based analysis of the social network within the Pittsburgh Twitter community.  This will utilize a community detection algorithm called <a href=\"https://en.wikipedia.org/wiki/Louvain_Modularity\">Louvain Modularity</a>");
+
 }
 
 function add_hashtag_chart()
