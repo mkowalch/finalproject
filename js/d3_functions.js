@@ -125,6 +125,81 @@ data1 = [
 		});
 	});
 
+	add_hashtag_chart();
+
+}
+
+function add_hashtag_chart()
+{
+
+	var data1 = [
+	{"hashtag_cnt":28970,"month":"201611"},
+	{"hashtag_cnt":9966,"month":"201612"},
+	{"hashtag_cnt":42657,"month":"201701"},
+	{"hashtag_cnt":84648,"month":"201702"},
+	{"hashtag_cnt":87027,"month":"201703"},
+	{"hashtag_cnt":81604,"month":"201704"},
+	{"hashtag_cnt":86100,"month":"201705"},
+	{"hashtag_cnt":90734,"month":"201706"},
+	{"hashtag_cnt":91723,"month":"201707"},
+	{"hashtag_cnt":52852,"month":"201708"},
+	{"hashtag_cnt":37759,"month":"201709"},
+	{"hashtag_cnt":71183,"month":"201711"},
+	{"hashtag_cnt":65699,"month":"201712"},
+	{"hashtag_cnt":67210,"month":"201801"},
+	{"hashtag_cnt":61631,"month":"201802"},
+	{"hashtag_cnt":67262,"month":"201803"},
+	{"hashtag_cnt":66138,"month":"201804"},
+	{"hashtag_cnt":57459,"month":"201805"},
+	{"hashtag_cnt":59591,"month":"201806"},
+	{"hashtag_cnt":76479,"month":"201807"},
+	{"hashtag_cnt":74228,"month":"201808"},
+	{"hashtag_cnt":69066,"month":"201809"},
+	{"hashtag_cnt":68975,"month":"201810"},
+	{"hashtag_cnt":45418,"month":"201811"}];
+
+
+	var div = d3.select("body").append("div");
+
+	p = div.append("p");
+	p.html("Number of Unique Hashtags used per month");
+
+	var chart_div = div.append("div");
+	chart_div.attr("id", "hashtag_chart_div");
+
+	var x = d3.scaleLinear()
+		.domain([0, 91723])
+		.range([0, 420]);
+
+	var div3 = chart_div.selectAll("div").data(data1).enter().append("div");
+	div3.style("width","600");
+	div3.style("display","flex");
+
+
+	div3.each(function(d) {
+		d3.select(this).append("div")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","black")
+		.style("font","10px sans-serif")
+		.style("width", "70px")
+		.text(function(d) {return d.month;});
+
+		d3.select(this).append("div")
+		.style("background-color","steelblue")
+		.style("text-align","right")
+		.style("padding","3px")
+		.style("margin","1px")
+		.style("color","white")
+		.style("font","10px sans-serif")
+		.style("width", function(d) {
+			return (x(d.hashtag_cnt)|0) + "px";
+		})
+		.text(function(d) {
+			return d.hashtag_cnt;
+		});
+	});
 
 }
 
