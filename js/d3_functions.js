@@ -60,6 +60,7 @@ data1 = [
 
 
 	var div = d3.select("body").append("div");
+	div.attr("id","main_div");
 
 	div.style("width","650px")
 		.style("margin","10px")
@@ -82,6 +83,9 @@ data1 = [
 	p.html("Data Size: 37 GB");
 	p = div.append("p");
 	p.html("Total Tweeter Count: 550275 unique twitter ids");
+
+	p = div.append("p");
+	p.html("Here is a chart showing the tweets over time.  Later we'll look at smaller time slices to see when people are most active.");
 
 	p = div.append("p");
 	p.html("Number of Tweets per month");
@@ -159,7 +163,10 @@ function add_hashtag_chart()
 	{"hashtag_cnt":45418,"month":"201811"}];
 
 
-	var div = d3.select("body").append("div");
+	var div = d3.select("#main_div");
+
+	var p = div.append("p");
+	p.html("Using hashtags we can see what kinds of conversations people are having.  Later we'll break out these hashtags into different groups.");
 
 	p = div.append("p");
 	p.html("Number of Unique Hashtags used per month");
