@@ -46,13 +46,13 @@ def exploratory_analysis():
     return template.render()
 
 @app.route('/Map')
-def exploratory_analysis():
+def map_screen():
     template = JINJA_ENVIRONMENT.get_template('templates/pittsburgh_map.html')
     return template.render()
 
 
 @app.route('pittsburgh_map.topo.json')
-def ddd3(path = None):
+def pitt_map_topo_json(path = None):
     return send_file("data/pittsburgh_map.topo.json",as_attachment=True)
 
 
