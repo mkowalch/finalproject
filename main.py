@@ -51,7 +51,7 @@ def map_screen():
     return template.render()
 
 
-@app.route('pittsburgh_map.topo.json')
+@app.route('/pittsburgh_map.topo.json')
 def pitt_map_topo_json(path = None):
     return send_file("data/pittsburgh_map.topo.json",as_attachment=True)
 
