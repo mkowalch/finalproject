@@ -700,7 +700,8 @@ function loader_map()
 	d3.select("body").style("width","1200px");
 
 	d3.select('body').append('div')
-			.attr("id","selector_div");
+			.attr("id","selector_div")
+			.style("margin-top","50px");
 
 	refresh_selector_div("weekday_hours");
 
