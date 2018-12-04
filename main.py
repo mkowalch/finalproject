@@ -50,6 +50,11 @@ def map_screen():
     template = JINJA_ENVIRONMENT.get_template('templates/pittsburgh_map.html')
     return template.render()
 
+@app.route('/DataAndRefs')
+def data_and_refs_screen():
+    template = JINJA_ENVIRONMENT.get_template('templates/data_and_refs.html')
+    return template.render()
+
 @app.route('/groups_weekday_hours_cnts/<path:path>')
 def defdata(path = None):
         return send_file(os.path.join("data/groups_weekday_hours_cnts",path),as_attachment=True)

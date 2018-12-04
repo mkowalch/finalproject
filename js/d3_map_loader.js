@@ -732,6 +732,55 @@ function loader_map()
 }
 
 
+function data_and_refs_loader()
+{
+
+	var div = d3.select("body").append("div");
+	div.attr("id","main_div");
+
+	div.style("width","650px")
+		.style("margin","10px")
+		.style("margin-top","50px")
+		.style("padding","3px")
+		.style("background-color","#e0e0eb");
+
+	var h2_data = div.append("h2");
+	h2_data.html("Data Downloads");
+
+	var p = div.append("p");
+	p.html("Data mapping latitude and longitude to groups:");
+
+	p = div.append("p");
+	p.html("Group membership data:");
+
+	p = div.append("p");
+	p.html("Pittsburgh neighborhood map in topoJSON format:");
+
+	p = div.append("p");
+	p.html("The Pittsburgh Neighborhood map shapefiles can be found <a href=\"http://pghgis-pittsburghpa.opendata.arcgis.com/datasets?q=Geography&sort_by=relevance\">here</a> or <a href=\"http://pghgis-pittsburghpa.opendata.arcgis.com\">here</a>.");
+
+	h2_data = div.append("h2");
+	h2_data.html("Twitter");
+
+	p = div.append("p");
+	p.html("Twitter API documentation can be found <a href=\"https://developer.twitter.com/en/docs.html\">here.</a>");
+
+	p = div.append("p");
+	p.html("Instructions for obtaining Twitter OAuth tokens can be found <a href=\"https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html\">here.</a>");
+
+	h2_data = div.append("h2");
+	h2_data.html("Code");
+
+	p = div.append("p");
+	p.html("python code for streaming Twitter data:");
+
+	p = div.append("p");
+	p.html("python code for performing Louvain community detection:");
+
+
+
+}
+
 
 /*
 function loader()
