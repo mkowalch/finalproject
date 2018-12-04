@@ -50,6 +50,16 @@ def map_screen():
     template = JINJA_ENVIRONMENT.get_template('templates/pittsburgh_map.html')
     return template.render()
 
+@app.route('/groups_weekday_hours_cnts/<path:path>')
+def defdata(path = None):
+        return send_file(os.path.join("data/groups_weekday_hours_cnts",path),as_attachment=True)
+    #return send_file("data/pittsburgh_map.topo.json",as_attachment=True)
+
+@app.route('/latlons_weekday_hours_w_grps/<path:path>')
+def defdata2(path = None):
+        return send_file(os.path.join("data/latlons_weekday_hours_w_grps",path),as_attachment=True)
+
+
 
 @app.route('/pittsburgh_map.topo.json')
 def pitt_map_topo_json(path = None):
