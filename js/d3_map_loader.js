@@ -697,33 +697,46 @@ function loader_map()
 
 	var width = 960,height = 960;
 
-	d3.select("body").style("width","1200px");
+	//d3.select("body").style("width","1200px");
 
-	d3.select('body').append('div')
+	var main_div = d3.select("body").append("div");
+
+	main_div.attr("id","main_div");
+
+	main_div.style("width","1200px")
+		.style("margin","10px")
+		.style("margin-top","50px")
+		.style("padding","3px")
+		.style("background-color","#e0e0eb");
+
+	//d3.select('body').append('div')
+	main_div.append('div')
 			.attr("id","selector_div")
 			.style("margin-top","100px");
 
 	refresh_selector_div("weekday_hours");
 
-	d3.select('body').append('br');
-
-	d3.select('body').append('div')
-			.attr("id","group_chart_div");
+	//d3.select('body').append('br');
+	main_div.append('br');
 
 	//d3.select('body').append('div')
-			//.attr("id","group_selector_div");
+	main_div.append('div')
+			.attr("id","group_chart_div");
 
 	refresh_group_selector("weekday_hours","Monday_00");
 
-	d3.select('body').append('br');
-	d3.select('body').append('br');
+	main_div.append('br');
+	main_div.append('br');
 
-	d3.select('body').append('div')
+	//d3.select('body').append('div')
+	main_div.append('div')
 			.attr("id","neighborhood_div")
+			.style("font","20px sans-serif")
 			.html("neighborhood: ");
 
 
-	var svg = d3.select('body').append('svg')
+	//var svg = d3.select('body').append('svg')
+	var svg = main_div.append('svg')
 			.attr('id','neighborhood_svg');
 
 
