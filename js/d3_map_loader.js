@@ -1,4 +1,63 @@
 
+function refresh_hashtags(grp_id,timeframe_type,timeframe)
+{
+
+	//var fname = "groups_"+ timeframe_type +"_cnts/" + timeframe + ".grps.cnt.csv";
+	//var fname = "groups_"+ "weekday_hours" +"_cnts/" + "Sunday_00" + ".grps.cnt.csv";
+	var fname = timeframe_type + "_groups_hashtags/" + timeframe + "/" + grp_id + "_hashtags.csv";
+
+	clog("r(): fname: " + fname);
+
+
+	if(grp_id == "-1") {
+
+		grp_id = "0";
+/*
+		var group_chart_div = d3.select("#hashtag_list_div").html(null);
+
+		group_chart_div
+		.style("background-color", "steelblue")
+		.style("height", "300px")
+		.style("width", "400px");
+		group_chart_div.text("No hashtags for selection.");
+
+		return;
+*/
+	}
+
+
+	d3.csv(fname, function(row,ii) {
+
+		//clog("row.hashtag: " + row.hashtag);
+		//return {name: row.hashtag, value: +row.cnt};
+
+		return {name: row.hashtag, value: 10};
+
+	}).then(function(grp_data) {
+
+		var group_chart_div = d3.select("#hashtag_list_div").html(null);
+
+		group_chart_div
+		.style("height", "300px")
+		.style("width", "400px")
+		//.style("background-color", "steelblue")
+
+		make_chart_hashtag(grp_data,group_chart_div,timeframe_type,timeframe);
+//		make_table(grp_data,group_chart_div,timeframe_type,timeframe);
+
+
+	});
+
+
+
+
+
+
+}
+
+
+
+
 
 function get_proj(path,feature,width,height)
 {
@@ -45,6 +104,7 @@ function append_weekday_hour_list()
 			var hour = d3.select("#weekday_hours_hours_selector").property("value");
 			var weekday = this.value;
 			var compound_weekday_hour = weekday + "_" + hour;
+			refresh_hashtags("0","weekday_hours",compound_weekday_hour);
 			refresh_map(-1,"weekday_hours",compound_weekday_hour);
 
 		});
@@ -74,6 +134,7 @@ function append_weekday_hour_list()
 			var compound_weekday_hour = weekday + "_" + hour;
 
 			refresh_group_selector("weekday_hours",compound_weekday_hour);
+			refresh_hashtags("0","weekday_hours",compound_weekday_hour);
 			refresh_map(-1,"weekday_hours",compound_weekday_hour);
 
 		});
@@ -146,6 +207,7 @@ function append_weekday_list()
 		.attr("id","weekday_selector")
 		.on('change', function(){
 
+			refresh_hashtags("0","weekday",this.value);
 			refresh_map(-1,"weekday",this.value);
 
 		});
@@ -181,6 +243,7 @@ function append_hour_list()
 		.attr("id","hour_selector")
 		.on('change', function(){
 
+			refresh_hashtags("0","hour",this.value);
 			refresh_map(-1,"hour",this.value);
 
 		});
@@ -249,6 +312,7 @@ function append_month_list()
 		.attr("id","month_selector")
 		.on('change', function(){
 
+			refresh_hashtags("0","months",this.value);
 			refresh_map(-1,"months",this.value);
 
 		});
@@ -463,6 +527,94 @@ var path = d3.geoPath()
 
 }
 
+function make_chart_hashtag(chart_data,chart_div,timeframe_type,timeframe)
+{
+
+	var x = d3.scaleLinear()
+		.domain([0, d3.max(chart_data, function(d) { return d.value; })-5])
+		.range([10, 400]);
+
+
+	var title_div = chart_div.append("div")
+		.style("width","400px")
+		.style("background-color","lightgrey")
+
+	title_div.append("div")
+		.style("width","70px")
+		.style("color","black")
+		.style("padding","4px")
+		.style("padding-right","2px")
+		.style("margin","1px")
+		.style("text-align","right")
+		.style("font","14px sans-serif")
+		.style("display","inline-block")
+		.text("hashtag")
+		.on("click",function() {
+
+			//clog("SORT");
+
+		});
+
+	title_div.append("div")
+		.style("width","5px")
+		.style("display","inline-block")
+		.style("padding","1px")
+		.style("margin","0px")
+		.style("font","14px sans-serif")
+		.text(":");
+/*
+
+	title_div.append("div")
+		.style("width","170px")
+		.style("color","black")
+		.style("padding","4px")
+		.style("padding-left","2px")
+		.style("margin","1px")
+		.style("font","14px sans-serif")
+		.style("display","inline-block")
+		.text("group_size")
+		.on("click",function() {
+
+			//clog("SORT");
+
+		});
+*/
+
+	var cc = chart_div.append("div")
+		.style("height", "300px")
+		.style("width", "400px")
+		.style("overflow","scroll");
+
+
+
+
+
+	var div3 = cc.selectAll("div").data(chart_data).enter().append("div");
+	div3.style("width","600px");
+	div3.style("display","flex");
+	div3.property("is_selected","no");
+
+
+	div3.each(function(d) {
+		d3.select(this).append("div")
+		.attr("id",function(d) {return "c1_" + d.name} )
+		.style("text-align","right")
+		.style("padding","4px")
+		.style("margin","1px")
+		.style("color","black")
+		.style("font","10px sans-serif")
+		.style("width", "70px")
+		.text(function(d) {return d.name;})
+		.property("group_id",function(d) { return d.name; })
+		.property("val",function(d) { return d.value; });
+
+	});
+
+
+}
+
+
+
 
 function make_chart2(chart_data,chart_div,timeframe_type,timeframe)
 {
@@ -590,6 +742,7 @@ function make_chart2(chart_data,chart_div,timeframe_type,timeframe)
 
 			d3.selectAll("#c1_part2_"+this.group_id).style("background-color","red").property("is_selected","yes");
 
+			refresh_hashtags(this.group_id,timeframe_type,timeframe)
 			refresh_map(this.group_id,timeframe_type,timeframe)
 
 
